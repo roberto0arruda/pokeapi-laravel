@@ -18,4 +18,18 @@ class PokedexController extends Controller
 
         return PokemonResource::collection($response->collect()->get('pokemon_entries'));
     }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+//        $imagem = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/$id.png";
+        $response = Http::get("https://pokeapi.co/api/v2/pokemon/$id/");
+
+        return $response;
+    }
 }
